@@ -1,0 +1,16 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<link href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet"></link>
+
+<!-- jstree -->
+<link rel="stylesheet" href="https://rawgit.com/ezraroi/ngJsTree/master/demo/bower_components/jstree/dist/themes/default/style.min.css">
+
+
+<!-- ngTagInput -->
+<link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+
+
+<!-- kendo listview -->
+<link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.2.714/styles/kendo.common-material.min.css" />
+<link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.2.714/styles/kendo.material.min.css" />
+<link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.2.714/styles/kendo.default.mobile.min.css" />

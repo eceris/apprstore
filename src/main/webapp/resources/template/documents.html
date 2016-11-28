@@ -1,0 +1,55 @@
+    <div class="container">
+       <div ng-controller="documentListViewCtrl as listviewCtrl" ng-init="init();"style="width: 100%; height:100%;">
+       
+            <!-- 카테고리 TreeView -->
+            <div class="demo-section k-content wide" style="width: 25%; height:100%; float:left">
+                <div  ng-controller="categoryController as cgCtrl" >
+                            
+                    <button type="button" class="btn btn-success btn-sm" ng-click="createNode()"><i class="glyphicon glyphicon-asterisk"></i> 카테고리 추가</button>
+                    <button type="button" class="btn btn-success btn-sm" ng-click="renameNode()"><i class="glyphicon glyphicon-asterisk"></i> 수정</button>
+                    <button type="button" class="btn btn-success btn-sm" ng-click="removeNode()"><i class="glyphicon glyphicon-asterisk"></i> 삭제</button>
+        
+                    <div class="row" cg-busy="cgCtrl.promise">
+                        <toaster-container></toaster-container>                
+                            <div class="panel panel-default" style="OVERFLOW-Y:auto; height:700px; width:250px;">
+                                <div class="panel-heading"><i class="glyphicon glyphicon-tree-conifer"></i> Category</div>
+                                <div class="panel-body">
+                                    <div  js-tree="treeConfig" should-apply="ac()" ng-model="categories"  tree="treeInstance" tree-events="ready:initNode;select_node:selectNode"></div>
+                                </div>
+                            </div>                
+                    </div>                       
+                </div>      
+            </div>              
+                           
+            <div class="demo-section k-content wide" style="width: 75%; height:100%; float:right">  
+                <h4> 카테고리 Tagging</h4>
+                <div ng-controller="tagController as tagCtrl">
+                    <tags-input ng-model="listviewCtrl.document.tags"   display-property="name"  on-tag-added="onTagUpdateForList($tag)"  on-tag-removed="onTagUpdateForList($tag)">
+                        <auto-complete min-length="0" source="loadTags($query)"   max-results-to-show="32"></auto-complete>
+                    </tags-input>
+                </div>
+                                                                        
+                <br><br>                                    
+                    <h5> 검색결과 {{documents.length}}개 항목</h5>                                               
+                    <button type="button" class="btn btn-info btn-sm" ng-click="createDocument()"><i class="glyphicon glyphicon-asterisk"></i> 양식 추가</button>
+                    <button type="button" class="btn btn-info btn-sm" ng-click="updateDocument()"><i class="glyphicon glyphicon-asterisk"></i> 수정</button>
+                    <button type="button" class="btn btn-info btn-sm" ng-click="removeDocument()"><i class="glyphicon glyphicon-asterisk"></i> 삭제</button>
+                          
+                    <div kendo-list-view id="listView" k-data-source="source">            
+                        <div class="document" k-template>
+                        <a href ng-click="imageClick(dataItem.id)">                                        
+                            <img ng-src="{{dataItem.thumbNailImage}}"   alt="test" />                                                            
+                            <h3>{{ dataItem.name }}</h3>
+                        </a>                    
+                        </div>
+                    </div>
+                
+                    <div kendo-pager k-data-source="source"></div>
+            </div>          
+                                       
+            <script type="text/x-kendo-angular-template" id="template">
+        </script>                       
+        </div>                                                        
+        <!-- / documentListViewCtrl ng-controller -->              
+                                           
+    </div>

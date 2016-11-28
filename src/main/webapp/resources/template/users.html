@@ -1,0 +1,46 @@
+<div class="table-container" ng-controller="userController as mc">
+   <div class="page-header">
+      <h1>계정관리</h1>
+      <p class="lead">양식저장소의 계정을 관리합니다. <br>
+         GUEST 권한의 경우 양식의 조회만 가능하며 ADMIN권한의 경우 관리가 가능합니다.
+      </p>
+   </div>
+   <table class="table table-striped" st-pipe="mc.callServer" st-table="mc.displayed">
+      <thead>
+         <tr>
+            <th st-sort="name" st-skip-natural="true">이름</th>
+            <th st-sort="loginId" st-skip-natural="true">아이디</th>
+            <th st-sort="email" st-skip-natural="true">메일</th>
+            <th st-sort="role" st-skip-natural="true">권한</th>
+            <th>수정</th>
+         </tr>
+      </thead>
+      <tbody ng-show="!mc.isLoading">
+         <tr ng-repeat="row in mc.displayed">
+            <td>{{row.name}}</td>
+            <td>{{row.loginId}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.role}}</td>
+            <td>{{row.gitGroup}}</td>
+            <td>
+               <button type="button" ng-click="goToUpdate(row)" class="btn btn-sm btn-primary">
+               <i class="glyphicon glyphicon-edit" title="수정"></i>
+               </button>
+            </td>
+         </tr>
+      </tbody>
+      <tbody ng-show="mc.isLoading">
+         <tr>
+            <td colspan="5" class="text-center">
+               <div class="loading-indicator"></div>
+            </td>
+         </tr>
+      </tbody>
+      <tfoot>
+         <tr>
+            <td class="text-center" st-pagination="" st-items-by-page="20" colspan="5">
+            </td>
+         </tr>
+      </tfoot>
+   </table>
+</div>

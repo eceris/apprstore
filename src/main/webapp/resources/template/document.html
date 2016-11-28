@@ -1,0 +1,99 @@
+           
+
+           <div class="container">
+    
+            <div class="row">
+                <div class="col-md-12">
+                 
+                 <div class="col-lg-9">
+                    <button class="btn btn-warning" ng-click="dcRegisterCtrl.close()"  style="float:right;">X</button>
+                 </div>
+                 
+                    <form ng-submit="dcRegisterCtrl.submit()" name="register" class="form-horizontal">          
+                        <legend>
+                            양식등록
+                        </legend>                                              
+
+                        <!-- 양식명 -->
+                        <div class="form-group">
+                            <label for="name" class="col-lg-2 control-label">양식명</label>
+                            <div class="col-lg-7">
+                                <input type="text" ng-model="dcRegisterCtrl.document.name" id="name" class="form-control" placeholder="지출결의서" required />
+                            </div>
+                        </div>
+                        
+                        <!-- 카테고리 -->
+                        <div class="form-group">
+                            <label for="categories" class="col-lg-2 control-label">카테고리</label>
+                            <div class="col-lg-7">                                                                    
+                                 <select class="form-control" ng-model="dcRegisterCtrl.document.category" id="category" data-ng-options="category as category.name for category in categories">                                                                       
+                                 </select>                                                                                                                      
+                            </div>
+                        </div>
+                        
+                        <!-- 태그 -->
+                        <div class="form-group">
+                            <label for="tag" class="col-lg-2 control-label">태그</label>
+                            <div class="col-lg-7">                                
+                                <div ng-controller="tagController as tagCtrl">
+                                    <tags-input ng-model="dcRegisterCtrl.document.tags"   display-property="name"  on-tag-added="onTagAddedForRegister($tag)"  >
+                                        <auto-complete min-length="0" source="loadTags($query)"   max-results-to-show="32"></auto-complete>
+                                    </tags-input>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 버전 -->
+                        <div class="form-group">
+                            <label for="version" class="col-lg-2 control-label">버전</label>
+                            <div class="col-lg-7">
+                                <input type="text" ng-model="dcRegisterCtrl.document.version" id="version" class="form-control" placeholder="2.3.3.1" required />
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- 양식본문 -->
+                        <div class="form-group">
+                            <label for="html" class="col-lg-2 control-label">html</label>
+                            <div class="col-lg-7">
+                                <textarea cols="20" rows="8" ng-model="dcRegisterCtrl.document.html" id="html" class="form-control" placeholder="html" required >
+                                </textarea>
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- 양식본문(컴포넌트 포함) -->
+                        <div class="form-group">
+                            <label for="htmlWithComponent" class="col-lg-2 control-label">html(Component)</label>
+                            <div class="col-lg-7">
+                                <textarea cols="20" rows="8" ng-model="dcRegisterCtrl.document.htmlWithComponent" id="htmlWithComponent" class="form-control" placeholder="htmlWithComponent" required >
+                                </textarea>
+                            </div>
+                        </div>    
+                        
+                        <!-- Desc -->
+                        <div class="form-group">
+                            <label for="description" class="col-lg-2 control-label">Desc</label>
+                            <div class="col-lg-7">
+                                <textarea cols="20" rows="4" ng-model="dcRegisterCtrl.document.description" id="description" class="form-control" placeholder="Desc." required >
+                                </textarea>
+                            </div>
+                        </div>                    
+                                        
+                        <!-- 저장 -->
+                        <div class="form-group">
+                            <div class="col-lg-7 col-lg-offset-2">
+                                <input type="submit" value="등록" class="btn btn-primary btn-block" ng-disabled="register.$invalid">                                                        
+                            </div>                                
+                        </div>                        
+                        
+                    </form>
+                    
+                    </div> <!-- /col-md-4 -->
+                    </div> <!-- /row -->
+            
+                </div>
+                <!-- /container -->
+
+                
+                
